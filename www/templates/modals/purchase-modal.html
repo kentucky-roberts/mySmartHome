@@ -1,0 +1,49 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Purchase</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeModal()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form class="purchase-form">
+      <div class="list">
+
+        <label class="item item-divider">
+          NAME
+        </label>
+        <label class="item item-input">
+          <input type="text" placeholder="Name of item being purchased" ng-model="purchaseData.title">
+        </label>
+
+        <label class="item item-divider">
+          TIME
+        </label>
+        <label class="item item-input">
+          <input type="text" placeholder="Start Time" ng-model="purchaseData.startTime">
+        </label>
+          <label class="item item-input">
+          <input type="text" placeholder="End Time" ng-model="purchaseData.endTime">
+        </label>
+          <label class="item item-input">
+          <input type="text" placeholder="RSVP By" ng-model="purchaseData.rsvpDate">
+        </label>
+
+
+        <label class="item item-divider">
+          DESCRIPTION
+        </label>
+        <label class="item item-input" ng-model="purchaseData.description">
+          <textarea placeholder="Description of your item being purchased"></textarea>
+        </label>
+
+        <label class="item">
+          <button class="button button-block button-positive" type="submit" ng-click="submitPurchaseForm();closeModal();">Purchase</button>
+        </label>
+
+
+
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>
