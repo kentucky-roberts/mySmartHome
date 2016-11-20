@@ -27,6 +27,19 @@ angular
   });
 })
 
+
+.config(function($cordovaInAppBrowserProvider) {
+  var defaultOptions = {
+    location: 'no',
+    clearcache: 'no',
+    toolbar: 'no'
+  };
+  // document.addEventListener(function () {
+  //   $cordovaInAppBrowserProvider.setDefaultOptions(options);
+  // }, false);
+})
+
+
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
@@ -51,7 +64,8 @@ angular
       views: {
         'menuContent': {
           templateUrl: 'templates/dashboard.html',
-          controller: 'AppCtrl'
+          // controller: 'AppCtrl'
+          controller: 'AppController'
           //controller: 'DashboardController'
         }
       }

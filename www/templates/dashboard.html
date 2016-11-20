@@ -4,9 +4,9 @@
     <div class="row">
       <div class="col">
         <h1><ion-icon name="speedometer" class="icon ion-ios-speedometer-outline"></ion-icon></h1>
-<!--         <div class="animated" ng-if="isVisible()" ng-animate="'{enter: 'fadeUp-enter', leave: 'fadeDown-leave'}'"></div>
- -->        
-
+        <p>
+          <!-- <span><strong><ion-icon name="clock" class="icon ion-ios-time-outline"></ion-icon></strong> {{message.time}}</span> -->
+        </p>
 
       </div>
     </div>
@@ -17,8 +17,13 @@
       <div class="col">
         <button class="button button-block" ng-click="showToast()">Show Toast at top with close</button>
       </div>
-      <div class="col">.col</div>
-      <div class="col">.col</div>
+      <div class="col">
+        <strong><ion-icon name="clock" class="icon ion-ios-time-outline"></ion-icon></strong>
+        <span am-time-ago="message.time | amParse:'YYYY.MM.DD HH:mm:ss'"></span>
+      </div>
+      <div class="col">
+        <span am-time-ago="message.unixTime | amFromUnix"></span>
+      </div>
       <div class="col">.col</div>
       <div class="col">.col</div>
       <div class="col">.col</div>

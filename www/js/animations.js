@@ -50,4 +50,4 @@ angular
       addClass: animateUp,
       removeClass: animateDown
     };
-});
+})

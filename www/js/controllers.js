@@ -88,6 +88,13 @@ angular.module('mySmartHome.controllers', [])
   ////////////////////////////////////////
   // Date
   ////////////////////////////////////////
+
+  $scope.message = {
+     text: 'hello world!',
+     time: new Date()
+  };
+
+
   $scope.datepickerObject = {
     titleLabel: 'Title',  //Optional
     todayLabel: 'Today',  //Optional
@@ -155,7 +162,7 @@ angular.module('mySmartHome.controllers', [])
   ////////////////////////////////////////
   $scope.showLogin = function() {
     ModalService
-      .init('modules/modals/login.html')
+      .init('templates/modals/login.html')
       .then(function(modal) {
           modal.show();
       });
@@ -184,7 +191,7 @@ angular.module('mySmartHome.controllers', [])
     { title: 'HVAC', id: 13, iconName: 'thermometer', iconClass: 'ion-thermometer'}, // Indoor (air tempature, humidity), zone1(), zone2(), zone3()) 
     { title: 'Plumbing', id: 14, iconName: 'wrench', iconClass: 'ion-wrench'},  // water-heater tempature, (2) H20 resivoir %filled, well-pump functioning correctly
     { title: 'Security', id: 15, iconName: 'apps', iconClass: 'ion-ios-locked-outline'},  //
-    { title: 'Settings', id: 16, iconName: 'settings', iconClass: 'ion-ios-cog-outline' }  //    
+    { title: 'Settings', id: 16, iconName: 'settings', iconClass: 'ion-ios-cog-outline' },  //    
     { title: 'Archives', id: 17, iconName: 'archive', iconClass: 'ion-ios-box-outline'}  // (photos, videos, logs) list by dateTime, 
   ];
 })
@@ -211,7 +218,7 @@ angular.module('mySmartHome.controllers', [])
     { title: 'HVAC', id: 13, iconName: 'thermometer', iconClass: 'ion-thermometer'},       //  zone1(), zone2(), zone3() :: (air tempature(airTempUp, airTempDown), humidityUp, humidityDown), ) 
     { title: 'Plumbing', id: 14, iconName: 'wrench', iconClass: 'ion-wrench'},  //   waterTanks(tank1(tempUp, tempDown), tank2(tempUp, tempDown), wellPump(on/off),)
     { title: 'Security', id: 15, iconName: 'locked', iconClass: 'ion-ios-locked-outline'},  //    alarmStatus(on/off)
-    { title: 'Settings', id: 16, iconName: 'settings', iconClass: 'ion-ios-cog-outline'}  //     
+    { title: 'Settings', id: 16, iconName: 'settings', iconClass: 'ion-ios-cog-outline'} , //     
     { title: 'Archives', id: 17, iconName: 'archive', iconClass: 'ion-ios-box-outline'}  // (photos, videos, logs) list by dateTime, 
   ];
 })
