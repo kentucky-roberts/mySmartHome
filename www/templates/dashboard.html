@@ -1,46 +1,92 @@
-<ion-view view-title="<ion-icon name='speedometer' class='icon ion-ios-speedometer-outline'></ion-icon> Dashboard">
-  <ion-content>
+<ion-view view-title="Welcome">
+  <ion-content ng-controller="AppController">
+    
+    <div class="dashboard-container" >
 
-    <div class="row">
-      <div class="col">
-        <h1><ion-icon name="speedometer" class="icon ion-ios-speedometer-outline"></ion-icon></h1>
-        <p>
-          <!-- <span><strong><ion-icon name="clock" class="icon ion-ios-time-outline"></ion-icon></strong> {{message.time}}</span> -->
-        </p>
+      <div class="banner">
+      <div class="banner-content">
+          
+            <h1><ion-icon name="speedometer" class="icon ion-ios-speedometer-outline"></ion-icon> Dashboard</h1>
+            <h3 class="title">Welcome to your super advanced dashboard!</h3>
+            <p class="text">
+              Text inside of the dashboard-banner here
+              <strong><ion-icon name="clock" class="icon ion-ios-time-outline"></ion-icon></strong>
+              <span am-time-ago="message.time | amParse:'YYYY.MM.DD HH:mm:ss'"></span>
+            </p>
+        </div>
+      </div>
+
+
+
+<div class="content">
+
+    <h3>Income</h3>
+    <div class="card">
+      <div class="item item-divider">
+        Total Online Revenue 
+      </div>
+      <div class="item item-text-wrap">
+        <angular-chart options="options" instance="instance"></angular-chart>
+
+
+
 
       </div>
-    </div>
-
-
-    <div class="row">
-      <h3>Components</h3>
-      <div class="col">
-        <button class="button button-block" ng-click="showToast()">Show Toast at top with close</button>
+      <div class="item item-divider">
+         <button class="button button-energized">More</button>
       </div>
-      <div class="col">
-        <strong><ion-icon name="clock" class="icon ion-ios-time-outline"></ion-icon></strong>
-        <span am-time-ago="message.time | amParse:'YYYY.MM.DD HH:mm:ss'"></span>
-      </div>
-      <div class="col">
-        <span am-time-ago="message.unixTime | amFromUnix"></span>
-      </div>
-      <div class="col">.col</div>
-      <div class="col">.col</div>
-      <div class="col">.col</div>
-    </div>
-
-
-    <div class="row">
-      <h3>Icons</h3>
-      <div class="col">.col</div>
-      <div class="col">.col</div>
-      <div class="col">.col</div>
-      <div class="col">.col</div>
-      <div class="col">.col</div>
-      <div class="col"><i class="icon ion-home"></i></div>
-    </div>
+  </div>
+                  
 
 
 
+          <button class="button button-light button-block">Light</button>
+          <button class="button button-positive button-block">Positive</button>
+          <button class="button button-balanced button-block">Balanced</button>
+          <button class="button button-energized button-block">Energized</button>
+          <button class="button button-royal button-block">Royal</button>
+          <button class="button button-dark button-block">Dark</button>
+          <button class="button button-stable button-block">Stable</button>
+          <button class="button button-assertive button-block">Danger</button>
+          <button class="button button-calm button-block">Calm</button>
+          <button class="button button-outline button-primary btn-banner">Default Banner Button</button>
+          <button class="button button-outline button-light button-block">Light</button>
+          <button class="button button-outline button-positive button-block">Positive</button>
+          <button class="button button-outline button-balanced button-block">Balanced</button>
+          <button class="button button-outline button-energized button-block">Energized</button>
+          <button class="button button-outline button-royal button-block">Royal</button>
+          <button class="button button-outline button-dark button-block">Dark</button>
+          <button class="button button-outline button-stable button-block">Stable</button>
+          <button class="button button-outline button-assertive button-block">Danger</button>
+          <button class="button button-outline button-calm button-block">Calm</button>
+       
+
+          <ionic-datepicker input-obj="datepickerObject">
+            <button class="button button-block button-positive"> {{datepickerObject.inputDate | date:'dd - MMMM - yyyy'}}</button>
+          </ionic-datepicker>
+  
+          <button class="button button-light">Light</button>
+          <button class="button button-positive">Positive</button>
+          <button class="button button-balanced">Balanced</button>
+          <button class="button button-energized">Energized</button>
+          <button class="button button-royal">Royal</button>
+          <button class="button button-dark">Dark</button>
+          <button class="button button-stable">Stable</button>
+          <button class="button button-assertive">Danger</button>
+          <button class="button button-calm">Calm</button>
+          <button class="button button-outline button-primary btn-banner">Default Banner Button</button>
+          <button class="button button-outline button-light">Light</button>
+          <button class="button button-outline button-positive">Positive</button>
+          <button class="button button-outline button-balanced">Balanced</button>
+          <button class="button button-outline button-energized">Energized</button>
+          <button class="button button-outline button-royal">Royal</button>
+          <button class="button button-outline button-dark">Dark</button>
+          <button class="button button-outline button-stable">Stable</button>
+          <button class="button button-outline button-assertive">Danger</button>
+          <button class="button button-outline button-calm">Calm</button>
+
+
+
+     </div>
   </ion-content>
 </ion-view>

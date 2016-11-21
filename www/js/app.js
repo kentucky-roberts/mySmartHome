@@ -65,7 +65,7 @@ angular
         'menuContent': {
           templateUrl: 'templates/dashboard.html',
           // controller: 'AppCtrl'
-          controller: 'AppController'
+          //controller: 'AppController'
           //controller: 'DashboardController'
         }
       }
@@ -85,7 +85,7 @@ angular
       views: {
         'menuContent': {
           templateUrl: 'templates/home-sensor.html',
-          controller: 'HomeSensorController'
+          controller: 'HomeSensorsController'
         }
       }
     })
@@ -104,7 +104,7 @@ angular
       views: {
         'menuContent': {
           templateUrl: 'templates/home-controller.html',
-          controller: 'HomeControllerController'
+          controller: 'HomeControllersController'
         }
       }
     });

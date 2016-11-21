@@ -1,8 +1,10 @@
-<ion-view view-title="Sensors">
+<ion-view view-title="<ion-icon name='game-controller-b' class='icon ios-game-controller-b-outline'></ion-icon> Sensors">
   <ion-content>
     <ion-list>
-      <ion-item ng-repeat="sensor in sensors" href="#/app/home-sensors/{{sensor.id}}">
-        <ion-icon name="{{sensor.iconName}}"></ion-icon> {{sensor.title}}
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="sensor in sensors" href="#/app/home-sensors/{{sensor.id}}" type="item-text-wrap">
+        <ion-icon name="{{sensor.iconName}}" class="icon {{sensor.iconClass}}"></ion-icon> 
+        {{sensor.title}}
+        <i class="icon ion-chevron-right icon-accessory"></i>
       </ion-item>
     </ion-list>
   </ion-content>

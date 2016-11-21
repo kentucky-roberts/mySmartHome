@@ -1,7 +1,7 @@
 {
   "name": "mySmartHome",
-  "app_id": "",
-    "proxies": [
+  "app_id": "4c55fb4f",
+  "proxies": [
     {
       "path": "api/item",
       "proxyUrl": "api.wpswebservices.com/item"
