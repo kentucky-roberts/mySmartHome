@@ -1,3 +1,7 @@
+(function () {
+    'use strict';
+
+
 /* app.js */
 angular
   .module('mySmartHome', [
@@ -63,7 +67,7 @@ angular
       url: '/dashboard',
       views: {
         'menuContent': {
-          templateUrl: 'templates/dashboard.html',
+          templateUrl: 'templates/dashboard.html'
           // controller: 'AppCtrl'
           //controller: 'AppController'
           //controller: 'DashboardController'
@@ -85,7 +89,7 @@ angular
       views: {
         'menuContent': {
           templateUrl: 'templates/home-sensor.html',
-          controller: 'HomeSensorsController'
+          controller: 'HomeSensorController'
         }
       }
     })
@@ -104,7 +108,7 @@ angular
       views: {
         'menuContent': {
           templateUrl: 'templates/home-controller.html',
-          controller: 'HomeControllersController'
+          controller: 'HomeControllerController'
         }
       }
     });
@@ -112,3 +116,5 @@ angular
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/dashboard');
 });
+
+})();

@@ -4,39 +4,41 @@
     <div class="dashboard-container" >
 
       <div class="banner">
-      <div class="banner-content">
-          
-            <h1><ion-icon name="speedometer" class="icon ion-ios-speedometer-outline"></ion-icon> Dashboard</h1>
-            <h3 class="title">Welcome to your super advanced dashboard!</h3>
-            <p class="text">
+        <div class="banner-content">
+            <h1 class="animated page-name hidden"><ion-icon name="speedometer" class="icon ion-ios-speedometer-outline"></ion-icon> Dashboard</h1>
+            <h1 class="animated page-time hidden"><ion-icon name="clock" class="icon ion-ios-time-outline"></ion-icon><span am-time-ago="message.time | amParse:'YYYY.MM.DD HH:mm:ss'"></span></h2>
+            <h3 class="animated page-welcome title hidden">Welcome to your super advanced dashboard!</h3>
+            <p class="animated text page-summary hidden">
               Text inside of the dashboard-banner here
-              <strong><ion-icon name="clock" class="icon ion-ios-time-outline"></ion-icon></strong>
-              <span am-time-ago="message.time | amParse:'YYYY.MM.DD HH:mm:ss'"></span>
+              
             </p>
         </div>
       </div>
 
 
 
-<div class="content">
+<div class="container">
 
-    <h3>Income</h3>
     <div class="card">
       <div class="item item-divider">
-        Total Online Revenue 
+        Line Charts
       </div>
-      <div class="item item-text-wrap">
-        <angular-chart options="options" instance="instance"></angular-chart>
-
-
+      <div class="item item-text-wrap" id="line-chart" ng-controller="LineCtrl">
+        
+        <canvas id="line" class="chart chart-line chart-xl" data="data" labels="labels" legend="true"
+                      click="onClick" series="series"></canvas>
 
 
       </div>
       <div class="item item-divider">
-         <button class="button button-energized">More</button>
+         <button class="button button-energized" ng-click="toggleAdditionalInfo()">More</button>
+         <p class="additional-info hidden">
+            This is some additional info and possibly a <a href="#">link</a> to details page.
+         </p>
       </div>
   </div>
                   
+
 
 
 

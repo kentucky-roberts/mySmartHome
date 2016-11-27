@@ -1,0 +1,36 @@
+/* animations.css  */
+.ng-hide {
+    display: none!important;
+}
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes disappear {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+.fade.ng-enter {
+  animation: 0.01s appear;
+}
+
+.fade.ng-leave {
+  animation: 0.01s disappear;
+}
+
+.show {
+  animation: 0.01s appear;
+  display: block!important;
+}
+.hidden {
+  animation: 0.01s disappear;
+  display: none!important;
+}

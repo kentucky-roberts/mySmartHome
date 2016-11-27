@@ -1,124 +1,104 @@
 angular.module('mySmartHome.services', [])
 
-.factory('Events',
+
+
+
+// .factory('HomeControllers', ['$resource',
+//   function($resource){
+//     return $resource('api/home_controllers.json/', {}, {
+//       query: {method:'GET', params:{controllerId:'home_controllers'}, isArray:true},
+//       // findRange:{method: 'GET', params:{cardXLevel:'@xLevel'/'@xLevelMax'}, isArray:true}
+//   });
+// }])
+
+
+
+
+.factory('ControllerService',
   function() {
   // Might use a resource here that returns a JSON array
 
-  // Some fake testing data
-  var events = [
- {
-    "id": 1,
-    "title": "40 Under 40",
-    "url_title": "40-under-40",
-    "image": "http://lorempixel.com/80/80/business/1/",
-    "lead": "Seattle becoming the worlds largest cloud community",
-    "description": "Join us to hear from local experts about harnessing the Cloud for dramatic business growth.",
-    "price": 99,
-    "qty": 100,
-    "photos": [
-      "http://lorempixel.com/500/500/business/1/",
-      "http://lorempixel.com/500/500/business/2/",
-      "http://lorempixel.com/500/500/business/3/"
-    ]
-  },
-  {
-    "id": 2,
-    "title": "Persuasive Business Writing",
-    "url_title": "persuasive-business-writing",
-    "image": "http://lorempixel.com/80/80/business/4/",
-    "lead": "Practical techniques for clear and persuasive business writing",
-    "description": "Lorem ipsum dolor sit amet, sed do eiusmod tempor. Incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    "price": 200,
-    "qty": 44,
-    "photos": [
-      "http://lorempixel.com/500/500/business/4/",
-      "http://lorempixel.com/500/500/business/5/",
-      "http://lorempixel.com/500/500/business/6/"
-    ]
-  },
-  {
-    "id": 3,
-    "title": "Corporate Counsel Awards",
-    "url_title": "corperate-council-awards",
-    "image": "http://lorempixel.com/80/80/business/7/",
-    "lead": "Join us for the Corporate Council Annual Awards and Events!",
-    "description": "Lorem ipsum dolor sit amet, sed do eiusmod tempor. Incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    "price": 50,
-    "qty": 200,
-    "date": 3,
-    "photos": [
-      "http://lorempixel.com/500/500/business/7/",
-      "http://lorempixel.com/500/500/business/8/",
-      "http://lorempixel.com/500/500/business/9/"
-    ]
-  },
-  {
-    "id": 4,
-    "title": "CFO of the Year Awards",
-    "url_title": "cfo-of-the-year",
-    "image": "http://lorempixel.com/80/80/business/10/",
-    "lead": "2016 CFO of the Year Honorees",
-    "description": "Join us as we celebrate the 2016 CFO of the Year Honorees and applaud their many accomplishments and contributions to the regions economy and community!",
-    "price": 15,
-    "qty": 500,
-    "date": 4,
-    "photos": [
-      "http://lorempixel.com/500/500/business/10/",
-      "http://lorempixel.com/500/500/business/11/",
-      "http://lorempixel.com/500/500/business/12/"
-    ]
-  },
-  {
-    "id": 5,
-    "title": "PNAAs 15th Annual Aerospace Conference: Flying into the Future",
-    "url_title": "pnnas-15th-annual-aerospace-conference",
-    "image": "http://lorempixel.com/80/80/business/13/",
-    "lead": "Join PNAA in the worlds largest commercial aerospace cluster",
-    "description": "Join PNAA in the worlds largest commercial aerospace cluster to gain crucial intelligence on the future of the aerospace manufacturing industry. Executive networking, B2B meetings, industry tours.",
-    "price": 75,
-    "qty": 55,
-    "date": 5,
-    "photos": [
-      "http://lorempixel.com/500/500/business/13/",
-      "http://lorempixel.com/500/500/business/14/",
-      "http://lorempixel.com/500/500/business/15/"
-    ]
-  },
-  {
-    "id": 6,
-    "title": "Amazing People Awarded for Doing Good Things",
-    "url_title": "amazing-people-awarded-for-doing-good-things",
-    "image": "http://lorempixel.com/80/80/business/16/",
-    "lead": "Great people doing great things and being awarded for it.  ",
-    "description": "This event will be life-changing, and you should buy a ticket because there are only three left!  Join PNAA in the worlds largest commercial aerospace cluster to gain crucial intelligence on the future of the aerospace manufacturing industry. Executive networking, B2B meetings, industry tours.",
-    "price": 15,
-    "qty": 100,
-    "date": 6,
-    "photos": [
-      "http://lorempixel.com/500/500/business/16/",
-      "http://lorempixel.com/500/500/business/17/",
-      "http://lorempixel.com/500/500/business/18/"
-    ]
-  }
+  var controllers = [
+    { title: 'Motion', id: 1, iconName: 'walk', iconClass: 'ion-android-walk', note: 'Hello there' },   // (zone1(), zone2(), zone3()) 
+    { title: 'Doors', id: 2, iconName: 'key', iconClass: 'ion-key' },  //// (zone1(), zone2(), zone3()) 
+    { title: 'Date', id: 3 , iconName: 'calendar', iconClass: 'ion-ios-calendar-outline'},  // (zone1(), zone2(), zone3()) 
+    { title: 'Windows', id: 4, iconName: 'windows', iconClass: 'ion-social-windows-outline'}, // (zone1(), zone2(), zone3()) 
+    { title: 'Lights', id: 5, iconName: 'bulb', iconClass: 'ion-ios-lightbulb-outline' },  // (zone1(), zone2(), zone3()) 
+    { title: 'Alarm', id: 6, iconName: 'alarm', iconClass: 'ion-ios-alarm-outline' }, //// (global(burgler, fire), zone1(), zone2(), zone3()) carbon-monoxide, fire, 
+    { title: 'Audio', id: 7, iconName: 'mic', iconClass: 'ion-ios-mic-outline'},   // (global(), zone1(), zone2(), zone3()) 
+    { title: 'Video', id: 8, iconName: 'film', iconClass: 'ion-ios-videocam-outline'},   // 
+    { title: 'Photo', id: 9, iconName: 'camera', iconClass: 'iion-ios-camera-outline' },   // 
+    { title: 'Battery', id: 10, iconName: 'battery-full', iconClass: 'ion-battery-full' }, // (incoming, current usage, battery bank remaining power, )
+    { title: 'Power', id: 11, iconName: 'power', iconClass: 'ion-power'}, // input, output, current usage, logged archive
+    { title: 'Appliances', id: 12, iconName: 'keypad', iconClass: 'ion-ios-keypad-outline'},  // refridgerator temp, freezer temp
+    { title: 'HVAC', id: 13, iconName: 'thermometer', iconClass: 'ion-thermometer'}, // Indoor (air tempature, humidity), zone1(), zone2(), zone3()) 
+    { title: 'Plumbing', id: 14, iconName: 'wrench', iconClass: 'ion-wrench'},  // water-heater tempature, (2) H20 resivoir %filled, well-pump functioning correctly
+    { title: 'Security', id: 15, iconName: 'apps', iconClass: 'ion-ios-locked-outline'},  //
+    { title: 'Settings', id: 16, iconName: 'settings', iconClass: 'ion-ios-cog-outline' },  //    
+    { title: 'Archives', id: 17, iconName: 'archive', iconClass: 'ion-ios-box-outline'}  // (photos, videos, logs) list by dateTime, 
   ];
-
   return {
     all: function() {
-      return events;
+      return controllers;
     },
-    remove: function(event) {
-      events.splice(events.indexOf(event), 1);
+    remove: function(controller) {
+      controllers.splice(controllers.indexOf(controller), 1);
     },
-    get: function(eventId) {
-      for (var i = 0; i < events.length; i++) {
-        if (events[i].id === parseInt(eventId)) {
-          return events[i];
+    get: function(controllerId) {
+      for (var i = 0; i < controllers.length; i++) {
+        if (controllers[i].id === parseInt(controllerId)) {
+          return controllers[i];
         }
       }
       return null;
     }
   };
 })
+
+
+
+.factory('SensorService',
+  function() {
+  // Might use a resource here that returns a JSON array
+  var sensors = [
+    { title: 'Motion', id: 1, iconName: 'walk', iconClass: 'ion-android-walk', note: 'Hello there' },   // (zone1(), zone2(), zone3()) 
+    { title: 'Doors', id: 2, iconName: 'key', iconClass: 'ion-key' },  //// (zone1(), zone2(), zone3()) 
+    { title: 'Date', id: 3 , iconName: 'calendar', iconClass: 'ion-ios-calendar-outline'},  // (zone1(), zone2(), zone3()) 
+    { title: 'Windows', id: 4, iconName: 'windows', iconClass: 'ion-social-windows-outline'}, // (zone1(), zone2(), zone3()) 
+    { title: 'Lights', id: 5, iconName: 'bulb', iconClass: 'ion-ios-lightbulb-outline' },  // (zone1(), zone2(), zone3()) 
+    { title: 'Alarm', id: 6, iconName: 'alarm', iconClass: 'ion-ios-alarm-outline' }, //// (global(burgler, fire), zone1(), zone2(), zone3()) carbon-monoxide, fire, 
+    { title: 'Audio', id: 7, iconName: 'mic', iconClass: 'ion-ios-mic-outline'},   // (global(), zone1(), zone2(), zone3()) 
+    { title: 'Video', id: 8, iconName: 'film', iconClass: 'ion-ios-videocam-outline'},   // 
+    { title: 'Photo', id: 9, iconName: 'camera', iconClass: 'iion-ios-camera-outline' },   // 
+    { title: 'Battery', id: 10, iconName: 'battery-full', iconClass: 'ion-battery-full' }, // (incoming, current usage, battery bank remaining power, )
+    { title: 'Power', id: 11, iconName: 'power', iconClass: 'ion-power'}, // input, output, current usage, logged archive
+    { title: 'Appliances', id: 12, iconName: 'keypad', iconClass: 'ion-ios-keypad-outline'},  // refridgerator temp, freezer temp
+    { title: 'HVAC', id: 13, iconName: 'thermometer', iconClass: 'ion-thermometer'}, // Indoor (air tempature, humidity), zone1(), zone2(), zone3()) 
+    { title: 'Plumbing', id: 14, iconName: 'wrench', iconClass: 'ion-wrench'},  // water-heater tempature, (2) H20 resivoir %filled, well-pump functioning correctly
+    { title: 'Security', id: 15, iconName: 'apps', iconClass: 'ion-ios-locked-outline'},  //
+    { title: 'Settings', id: 16, iconName: 'settings', iconClass: 'ion-ios-cog-outline' },  //    
+    { title: 'Archives', id: 17, iconName: 'archive', iconClass: 'ion-ios-box-outline'}  // (photos, videos, logs) list by dateTime, 
+  ];
+  return {
+    all: function() {
+      return sensors;
+    },
+    remove: function(sensor) {
+      sensors.splice(sensors.indexOf(sensor), 1);
+    },
+    get: function(sensorId) {
+      for (var i = 0; i < sensors.length; i++) {
+        if (sensors[i].id === parseInt(sensorId)) {
+          return sensors[i];
+        }
+      }
+      return null;
+    }
+  };
+})
+
+
+
 
 .service('ModalService', ModalService);
 

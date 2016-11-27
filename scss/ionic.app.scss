@@ -20,6 +20,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
 @import "../www/lib/ionic/scss/ionic";
+@import "animations";
 @import "components";
 
 html, body {
@@ -80,6 +81,10 @@ h3.title:after {
 h3.title {
     color: #fff;
 }
+
+
+
+
 
 
 // sweet parallax effect with css //

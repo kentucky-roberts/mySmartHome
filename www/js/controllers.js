@@ -45,7 +45,7 @@ angular.module('mySmartHome.controllers', [])
 
 
 
-.controller('AppController', ['$scope', '$ionicModal', '$window', '$interval', '$timeout', '$ionicLoading', 'ionicToast', 'ModalService', function($scope, $ionicModal, $timeout, $window, $interval, $timeout, $ionicLoading, ionicToast, ModalService) {
+.controller('AppController', ['$scope', '$ionicModal', '$window', '$interval', '$timeout', '$ionicLoading', 'ionicToast', 'ModalService', 'SensorService', 'ControllerService', function($scope, $ionicModal, $timeout, $window, $interval, $timeout, $ionicLoading, ionicToast, ModalService, SensorService, ControllerService) {
 
   var app = this;
 
@@ -61,32 +61,52 @@ angular.module('mySmartHome.controllers', [])
   ////////////////////////////////////////
   $scope.$on('$ionicView.enter', function(e) {
     console.log("ionicView.enter: has just been called in the AppController!  TODO... Add spinner or css fade-in animation.");
+    //$scope.showLoading();
   });
 
   ////////////////////////////////////////
-  // Chart init
+  // Loading
   ////////////////////////////////////////
-$scope.options = {
-  dimensions: {
-    income: {
-      axis: 'y',
-      type: 'scatter'
-    },
-    sales: { // all visible dimensions have to be defined here
-    },       // leave the object empty to add a line to the y-Axis
-    day: {
-      axis: 'x',
-      displayFormat: '%Y-%m-%d %H:%M:%S'
-    }
+  $scope.showLoading = function(){
+    console.log("show loading thing!");
   }
-};
-    
-    // optional (direct access to c3js API http://c3js.org/reference.html#api)
-    $scope.instance = null;
 
-  $scope.$on('angular-chart-rendered', function(event, options, instance) {
-    console.log(options, instance);
-  });
+  ////////////////////////////////////////
+  // Start
+  ////////////////////////////////////////
+  app.start = function() {
+    console.log("app.start: hide loading overlay, show splash-screen");    
+    //$scope.hideLoading();
+    app.startSplash();
+  }
+
+  ////////////////////////////////////////
+  // Start Splash
+  ////////////////////////////////////////
+  app.startSplash = function(){
+    $(".page-name").removeClass("hidden").addClass("slideInDown");
+    $(".page-welcome ").removeClass("hidden").addClass("slideInUp");
+    $(".page-summary").removeClass("hidden").addClass("slideInLeft");
+    //$(".hands").removeClass("hidden").addClass("zoomIn");
+    //$(".card").removeClass("hidden").addClass("bounceIn");
+  };
+
+  ////////////////////////////////////////
+  // Show/Hide
+  ////////////////////////////////////////
+  $scope.toggleAdditionalInfo = function() {
+    console.log("toggle additional info");
+    //$(".additional-info").removeClass("show").addClass("hidden");
+    $(".additional-info").removeClass("hidden").addClass("show");
+  };
+
+
+
+
+
+    $scope.filterFunction = function(element) {
+        return element.name.match(/^Ma/) ? true : false;
+    };
 
 
   ////////////////////////////////////////
@@ -119,7 +139,6 @@ $scope.options = {
      text: 'hello world!',
      time: new Date()
   };
-
 
   $scope.datepickerObject = {
     titleLabel: 'Title',  //Optional
@@ -199,95 +218,51 @@ $scope.options = {
       });
   };
   
+
+  ////////////////////////////////////////
+  // app.init
+  ////////////////////////////////////////
   app.init();
+
+  ////////////////////////////////////////
+  // Hide Loading
+  ////////////////////////////////////////
+    $scope.hideLoading = function() {
+      $timeout(function() {
+          $ionicLoading.hide();
+      }, 100);
+  };
+
+  app.start();
 }])
 
 
 
-.controller('HomeSensorsController', function($scope) {
+.controller('HomeSensorsController', function($scope, SensorService) {
   console.log('Index page for HomeSensorsController.');
-  $scope.sensors = [
-    { title: 'Motion', id: 1, iconName: 'walk', iconClass: 'ion-android-walk', note: 'Hello there' },   // (zone1(), zone2(), zone3()) 
-    { title: 'Doors', id: 2, iconName: 'key', iconClass: 'ion-key' },  //// (zone1(), zone2(), zone3()) 
-    { title: 'Date', id: 3 , iconName: 'calendar', iconClass: 'ion-ios-calendar-outline'},  // (zone1(), zone2(), zone3()) 
-    { title: 'Windows', id: 4, iconName: 'windows', iconClass: 'ion-social-windows-outline'}, // (zone1(), zone2(), zone3()) 
-    { title: 'Lights', id: 5, iconName: 'bulb', iconClass: 'ion-ios-lightbulb-outline' },  // (zone1(), zone2(), zone3()) 
-    { title: 'Alarm', id: 6, iconName: 'alarm', iconClass: 'ion-ios-alarm-outline' }, //// (global(burgler, fire), zone1(), zone2(), zone3()) carbon-monoxide, fire, 
-    { title: 'Audio', id: 7, iconName: 'mic', iconClass: 'ion-ios-mic-outline'},   // (global(), zone1(), zone2(), zone3()) 
-    { title: 'Video', id: 8, iconName: 'film', iconClass: 'ion-ios-videocam-outline'},   // 
-    { title: 'Photo', id: 9, iconName: 'camera', iconClass: 'iion-ios-camera-outline' },   // 
-    { title: 'Battery', id: 10, iconName: 'battery-full', iconClass: 'ion-battery-full' }, // (incoming, current usage, battery bank remaining power, )
-    { title: 'Power', id: 11, iconName: 'power', iconClass: 'ion-power'}, // input, output, current usage, logged archive
-    { title: 'Appliances', id: 12, iconName: 'keypad', iconClass: 'ion-ios-keypad-outline'},  // refridgerator temp, freezer temp
-    { title: 'HVAC', id: 13, iconName: 'thermometer', iconClass: 'ion-thermometer'}, // Indoor (air tempature, humidity), zone1(), zone2(), zone3()) 
-    { title: 'Plumbing', id: 14, iconName: 'wrench', iconClass: 'ion-wrench'},  // water-heater tempature, (2) H20 resivoir %filled, well-pump functioning correctly
-    { title: 'Security', id: 15, iconName: 'apps', iconClass: 'ion-ios-locked-outline'},  //
-    { title: 'Settings', id: 16, iconName: 'settings', iconClass: 'ion-ios-cog-outline' },  //    
-    { title: 'Archives', id: 17, iconName: 'archive', iconClass: 'ion-ios-box-outline'}  // (photos, videos, logs) list by dateTime, 
-  ];
+  $scope.sensors = SensorService.all();
 })
-.controller('HomeSensorController', function($scope, $stateParams) {
+.controller('HomeSensorController', function($scope, $stateParams, SensorService) {
   console.log('Details page for a HomeSensorController item.');
+  $scope.sensor = SensorService.get($stateParams.sensorId);
+   var sensor = $scope.sensor;
+   console.log(sensor);
 })
 
 
-.controller('HomeControllersController', function($scope) {
+.controller('HomeControllersController', function($scope, ControllerService) {
   console.log('Index page for HomeControllersController');
-  $scope.controllers = [
-    { title: 'Motion', id: 1, iconName: 'walk', iconClass: 'ion-android-walk'},   // (zone1(), zone2(), zone3()) 
-    { title: 'Doors', id: 2, iconName: 'key', iconClass: 'ion-key'},  //// (zone1(), zone2(), zone3()) 
-    { title: 'Date', id: 3, iconName: 'calendar', iconClass: 'ion-ios-calendar-outline'},     // (zone1(), zone2(), zone3()) 
-    { title: 'Windows', id: 4, iconName: 'windows', iconClass: 'ion-social-windows-outline'}, // (zone1(), zone2(), zone3()) 
-    { title: 'Lights', id: 5, iconName: 'bulb', iconClass: 'ion-ios-lightbulb-outline'},   // (zone1(), zone2(), zone3()) 
-    { title: 'Alarm', id: 6, iconName: 'alarm', iconClass: 'ion-ios-alarm-outline'},  //// (zone1(), zone2(), zone3() :: burgler(on/off), fire(on/off)), carbon-monoxide(on/off))  
-    { title: 'Audio', id: 7, iconName: 'mic', iconClass: 'ion-ios-mic-outline'},     // (zone1(), zone2(), zone3()) 
-    { title: 'Video', id: 8, iconName: 'film', iconClass: 'ion-ios-videocam-outline'},    //  (zone1(), zone2(), zone3() :: record live-feed 
-    { title: 'Photo', id: 9, iconName: 'camera', iconClass: 'ion-ios-camera-outline'},   //  (zone1(), zone2(), zone3() :: record live-feed : take-picture, save-picture
-    { title: 'Battery', id: 10, iconName: 'battery-full', iconClass: 'ion-battery-full'}, //   (incomingSolar(on/off), incomingWind(on/off), sign-wave-inverter (12vDC to 120vAC (550W max))
-    { title: 'Power', id: 11, iconName: 'power', iconClass: 'ion-power'}, //  
-    { title: 'Appliances', id: 12, iconName: 'keypad', iconClass: 'ion-ios-keypad-outline'},  // refridgerator(tempUp, tempDown), freezer(tempUp, tempDown)
-    { title: 'HVAC', id: 13, iconName: 'thermometer', iconClass: 'ion-thermometer'},       //  zone1(), zone2(), zone3() :: (air tempature(airTempUp, airTempDown), humidityUp, humidityDown), ) 
-    { title: 'Plumbing', id: 14, iconName: 'wrench', iconClass: 'ion-wrench'},  //   waterTanks(tank1(tempUp, tempDown), tank2(tempUp, tempDown), wellPump(on/off),)
-    { title: 'Security', id: 15, iconName: 'locked', iconClass: 'ion-ios-locked-outline'},  //    alarmStatus(on/off)
-    { title: 'Settings', id: 16, iconName: 'settings', iconClass: 'ion-ios-cog-outline'} , //     
-    { title: 'Archives', id: 17, iconName: 'archive', iconClass: 'ion-ios-box-outline'}  // (photos, videos, logs) list by dateTime, 
-  ];
+  $scope.controllers = ControllerService.all();
 })
-.controller('HomeControllerController', function($scope, $stateParams) {
+.controller('HomeControllerController', function($scope, $stateParams, ControllerService) {
   console.log('Details page for a HomeControllerController item.');
+   $scope.controller = ControllerService.get($stateParams.controllerId);
+   var controller = $scope.controller;
+   console.log(controller);
 })
-
-
-//ion-ios-home-outline
-
-
-// .controller('ItemsController', function($scope) {
-//   console.log('Index page.');
-//   $scope.items = [
-//     { title: 'Motion', id: 1, iconName: 'ios-apps-outline' },   // (zone1(), zone2(), zone3()) 
-//     { title: 'Doors', id: 2, iconName: 'key' },  //// (zone1(), zone2(), zone3()) 
-//     { title: 'Date', id: 3 , iconName: 'apps'},  // (zone1(), zone2(), zone3()) 
-//     { title: 'Windows', id: 4, iconName: 'apps' }, // (zone1(), zone2(), zone3()) 
-//     { title: 'Lights', id: 5, iconName: 'bulb' },  // (zone1(), zone2(), zone3()) 
-//     { title: 'Alarm', id: 6, iconName: 'apps' }, //// (global(burgler, fire), zone1(), zone2(), zone3()) carbon-monoxide, fire, 
-//     { title: 'Audio', id: 7, iconName: 'apps' },   // (global(), zone1(), zone2(), zone3()) 
-//     { title: 'Video', id: 8, iconName: 'film' },   // 
-//     { title: 'Photo', id: 9, iconName: 'camera' },   // 
-//     { title: 'Battery', id: 10, iconName: 'battery-full' }, // (incoming, current usage, battery bank remaining power, )
-//     { title: 'Power', id: 11, iconName: 'power'}, // input, output, current usage, logged archive
-//     { title: 'Appliances', id: 12, iconName: 'apps' },  // refridgerator temp, freezer temp
-//     { title: 'HVAC', id: 13, iconName: 'apps' }, // Indoor (air tempature, humidity), zone1(), zone2(), zone3()) 
-//     { title: 'Plumbing', id: 14, iconName: 'apps'},  // water-heater tempature, (2) H20 resivoir %filled, well-pump functioning correctly
-//     { title: 'Security', id: 15, iconName: 'apps'},  //
-//     { title: 'Settings', id: 16, iconName: 'settings' }  //    
-//   ];
-// })
-// .controller('ItemController', function($scope, $stateParams) {
-//   console.log('Details page.');
-// })
-
 
 .controller('MenuCtrl', function ($scope) {
+  console.log('menu controller');
       $scope.isCollapsed = true;
       $scope.charts = ['Line', 'Bar', 'Doughnut', 'Pie', 'Polar Area', 'Radar', 'Base'];
     })

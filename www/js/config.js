@@ -6,7 +6,8 @@ angular
         'ngAnimate',
         'ngSanitize',
         'ionic-toast',
-        'angularChart',
+        //'angularChart',
+        'chart.js',
         'angularMoment',
         'ionic-datepicker',
         'ionic-timepicker'
