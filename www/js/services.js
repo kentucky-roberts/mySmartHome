@@ -29,7 +29,7 @@ angular.module('mySmartHome.services', [])
     { title: 'Alarm', id: 6, iconName: 'alarm', iconClass: 'ion-ios-alarm-outline' }, //// (global(burgler, fire), zone1(), zone2(), zone3()) carbon-monoxide, fire, 
     { title: 'Audio', id: 7, iconName: 'mic', iconClass: 'ion-ios-mic-outline'},   // (global(), zone1(), zone2(), zone3()) 
     { title: 'Video', id: 8, iconName: 'film', iconClass: 'ion-ios-videocam-outline'},   // 
-    { title: 'Photo', id: 9, iconName: 'camera', iconClass: 'iion-ios-camera-outline' },   // 
+    { title: 'Photo', id: 9, iconName: 'camera', iconClass: 'ion-ios-camera-outline' },   // 
     { title: 'Battery', id: 10, iconName: 'battery-full', iconClass: 'ion-battery-full' }, // (incoming, current usage, battery bank remaining power, )
     { title: 'Power', id: 11, iconName: 'power', iconClass: 'ion-power'}, // input, output, current usage, logged archive
     { title: 'Appliances', id: 12, iconName: 'keypad', iconClass: 'ion-ios-keypad-outline'},  // refridgerator temp, freezer temp
@@ -73,7 +73,7 @@ angular.module('mySmartHome.services', [])
     { title: 'Alarm', id: 6, iconName: 'alarm', iconClass: 'ion-ios-alarm-outline' }, //// (global(burgler, fire), zone1(), zone2(), zone3()) carbon-monoxide, fire, 
     { title: 'Audio', id: 7, iconName: 'mic', iconClass: 'ion-ios-mic-outline'},   // (global(), zone1(), zone2(), zone3()) 
     { title: 'Video', id: 8, iconName: 'film', iconClass: 'ion-ios-videocam-outline'},   // 
-    { title: 'Photo', id: 9, iconName: 'camera', iconClass: 'iion-ios-camera-outline' },   // 
+    { title: 'Photo', id: 9, iconName: 'camera', iconClass: 'ion-ios-camera-outline' },   // 
     { title: 'Battery', id: 10, iconName: 'battery-full', iconClass: 'ion-battery-full' }, // (incoming, current usage, battery bank remaining power, )
     { title: 'Power', id: 11, iconName: 'power', iconClass: 'ion-power'}, // input, output, current usage, logged archive
     { title: 'Appliances', id: 12, iconName: 'keypad', iconClass: 'ion-ios-keypad-outline'},  // refridgerator temp, freezer temp

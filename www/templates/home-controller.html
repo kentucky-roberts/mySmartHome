@@ -1,6 +1,55 @@
 <ion-view view-title="Home Controller">
   <ion-content>
     <h1><ion-icon class="icon {{controller.iconClass}}"></ion-icon> {{controller.title}}</h1>
+
+
+
+<div class="tabs">
+  <a class="tab-item">
+    Home
+  </a>
+  <a class="tab-item">
+    Favorites
+  </a>
+  <a class="tab-item">
+    Settings
+  </a>
+</div>
+
+<ul class="list">
+
+  <li class="item item-toggle">
+     Doors
+     <label class="toggle toggle-assertive">
+       <input type="checkbox">
+       <div class="track">
+         <div class="handle"></div>
+       </div>
+     </label>
+  </li>
+
+  <li class="item item-toggle">
+     Windows
+     <label class="toggle toggle-assertive">
+       <input type="checkbox">
+       <div class="track">
+         <div class="handle"></div>
+       </div>
+     </label>
+  </li>
+
+
+
+</ul>
+
+
+<label class="toggle">
+   <input type="checkbox">
+   <div class="track">
+     <div class="handle"></div>
+   </div>
+</label>
+
         
     <ion-pane id="motion" class="my-slide-animation" ng-if="app.motion">
           <div ng-include="'templates/motion/motion.html'"></div>

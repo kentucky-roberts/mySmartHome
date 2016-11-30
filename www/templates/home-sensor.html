@@ -1,6 +1,16 @@
 <ion-view view-title="Home Sensor">
   <ion-content>
 
+<div class="card">
+      <div class="item item-divider">Bar Chart</div>
+      <div class="item item-text-wrap" id="bar-chart" ng-controller="BarCtrl">
+        
+        <canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-series="series"></canvas>
+
+      </div>
+    </div>
+
+
       <div class="container">
           <div class="row">
               <section class="col">
