@@ -1,21 +1,13 @@
-<ion-view view-title="{{controller.title}}">
+<ion-view view-title="Home Controller">
   <ion-content>
     <h1><ion-icon class="icon {{controller.iconClass}}"></ion-icon> {{controller.title}}</h1>
-    <h2>Show active <br>controller's controls</h2>
-
-      <div class="item range">
-          <i class="icon ion-volume-low"></i>
-          <input type="range" name="volume">
-          <i class="icon ion-volume-high"></i>
-        </div>
-
-        <div class="list">
-          <div class="item range range-positive">
-            <i class="icon ion-ios-sunny-outline"></i>
-            <input type="range" name="volume" min="0" max="100" value="33">
-            <i class="icon ion-ios-sunny"></i>
-          </div>
-        </div>
+        
+    <ion-pane id="motion" class="my-slide-animation" ng-if="app.motion">
+          <div ng-include="'templates/motion/motion.html'"></div>
+      </ion-pane>
+      <ion-pane id="doors" class="my-slide-animation" ng-if="app.doors">
+          <div ng-include="'templates/doors/doors.html'"></div>
+      </ion-pane>
 
   </ion-content>
 </ion-view>

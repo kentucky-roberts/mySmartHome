@@ -86,7 +86,7 @@ angular.module('mySmartHome.controllers', [])
   app.startSplash = function(){
     $(".page-name").removeClass("hidden").addClass("slideInDown");
     $(".page-welcome ").removeClass("hidden").addClass("slideInUp");
-    $(".page-summary").removeClass("hidden").addClass("slideInLeft");
+    //$(".page-summary").removeClass("hidden").addClass("slideInLeft");
     //$(".hands").removeClass("hidden").addClass("zoomIn");
     //$(".card").removeClass("hidden").addClass("bounceIn");
   };
@@ -190,6 +190,40 @@ angular.module('mySmartHome.controllers', [])
 
 
 
+  $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
+  $scope.series = ['Series A', 'Series B'];
+  $scope.data = [
+    [65, 59, 80, 81, 56, 55, 40],
+    [28, 48, 40, 19, 86, 27, 90]
+  ];
+  $scope.onClick = function (points, evt) {
+    console.log(points, evt);
+  };
+  $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
+  $scope.options = {
+    scales: {
+      yAxes: [
+        {
+          id: 'y-axis-1',
+          type: 'linear',
+          display: true,
+          position: 'left'
+        },
+        {
+          id: 'y-axis-2',
+          type: 'linear',
+          display: true,
+          position: 'right'
+        }
+      ]
+    }
+  };
+
+
+
+
+
+
 
 
   ////////////////////////////////////////
@@ -218,7 +252,6 @@ angular.module('mySmartHome.controllers', [])
       });
   };
   
-
   ////////////////////////////////////////
   // app.init
   ////////////////////////////////////////
@@ -263,9 +296,9 @@ angular.module('mySmartHome.controllers', [])
 
 .controller('MenuCtrl', function ($scope) {
   console.log('menu controller');
-      $scope.isCollapsed = true;
-      $scope.charts = ['Line', 'Bar', 'Doughnut', 'Pie', 'Polar Area', 'Radar', 'Base'];
-    })
+  $scope.isCollapsed = true;
+  $scope.charts = ['Line', 'Bar', 'Doughnut', 'Pie', 'Polar Area', 'Radar', 'Base'];
+})
 
 .controller('LineCtrl', ['$scope', '$timeout', function ($scope, $timeout) {
       $scope.labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
@@ -311,6 +344,7 @@ angular.module('mySmartHome.controllers', [])
     }])
 
 .controller('PieCtrl', function ($scope) {
+      $scope.options = { scaleShowVerticalLines: false };
       $scope.labels = ['Download Sales', 'In-Store Sales', 'Mail Sales'];
       $scope.data = [300, 500, 100];
     })
@@ -331,17 +365,18 @@ angular.module('mySmartHome.controllers', [])
     })
 
 .controller('RadarCtrl', function ($scope) {
-      $scope.labels = ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'];
+  $scope.options = { scaleShowVerticalLines: false };
+  $scope.labels = ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'];
 
-      $scope.data = [
-        [65, 59, 90, 81, 56, 55, 40],
-        [28, 48, 40, 19, 96, 27, 100]
-      ];
+  $scope.data = [
+    [65, 59, 90, 81, 56, 55, 40],
+    [28, 48, 40, 19, 96, 27, 100]
+  ];
 
-      $scope.onClick = function (points, evt) {
-        console.log(points, evt);
-      };
-    })
+  $scope.onClick = function (points, evt) {
+    console.log(points, evt);
+  };
+})
 
 .controller('DataTablesCtrl', function ($scope) {
       $scope.labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];

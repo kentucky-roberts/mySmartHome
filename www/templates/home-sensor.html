@@ -1,6 +1,33 @@
-<ion-view view-title="{{sensor.title}}">
+<ion-view view-title="Home Sensor">
   <ion-content>
-    <h1><ion-icon name="{{sensor.iconName}}" class="icon {{sensor.iconClass}}"></ion-icon> {{sensor.title}}</h1>
+
+      <div class="container">
+          <div class="row">
+              <section class="col">
+
+                <h1><ion-icon name="{{sensor.iconName}}" class="icon {{sensor.iconClass}}"></ion-icon> {{sensor.title}}</h1>
+                <ul class="timeline">
+                    <li class="timeline-inverted" ng-repeat="image in sensor.loggedImages track by $index">
+                      <div class="timeline-badge primary">
+                      <a>
+                        <i class="icon ion-ios-circle-filled" rel="tooltip" title="time" id=""></i>
+                      </a>
+                      </div>
+                      <div class="timeline-panel">
+                        <div class="timeline-heading">
+                          <a href="#">
+                            <img class="img-responsive center-block" src="{{image}}" />
+                          </a>
+                        </div>
+                      </div>
+                    </li>
+                </ul>
+
+              </section>
+          </div>
+      </div>
+        
+
 
   </ion-content>
 </ion-view>

@@ -68,9 +68,6 @@ angular
       views: {
         'menuContent': {
           templateUrl: 'templates/dashboard.html'
-          // controller: 'AppCtrl'
-          //controller: 'AppController'
-          //controller: 'DashboardController'
         }
       }
     })

@@ -6,29 +6,37 @@
       <div class="banner">
         <div class="banner-content">
             <h1 class="animated page-name hidden"><ion-icon name="speedometer" class="icon ion-ios-speedometer-outline"></ion-icon> Dashboard</h1>
-            <h1 class="animated page-time hidden"><ion-icon name="clock" class="icon ion-ios-time-outline"></ion-icon><span am-time-ago="message.time | amParse:'YYYY.MM.DD HH:mm:ss'"></span></h2>
             <h3 class="animated page-welcome title hidden">Welcome to your super advanced dashboard!</h3>
-            <p class="animated text page-summary hidden">
-              Text inside of the dashboard-banner here
-              
-            </p>
         </div>
       </div>
+  
 
 
 
 <div class="container">
 
+
+    <div class="card">
+      <div class="item item-divider">
+        Doughnut Chart
+      </div>
+      <div class="item item-text-wrap" id="line-chart" ng-controller="DoughnutCtrl">
+        <canvas id="doughnut" class="chart chart-doughnut"
+          chart-data="data" chart-labels="labels">
+        </canvas> 
+      </div>
+    </div>
+
+
     <div class="card">
       <div class="item item-divider">
         Line Charts
       </div>
-      <div class="item item-text-wrap" id="line-chart" ng-controller="LineCtrl">
-        
-        <canvas id="line" class="chart chart-line chart-xl" data="data" labels="labels" legend="true"
-                      click="onClick" series="series"></canvas>
-
-
+      <div class="item item-text-wrap" id="line-chart" ng-controller="AppController">
+        <canvas id="line" class="chart chart-line" chart-data="data"
+        chart-labels="labels" chart-series="series" chart-options="options"
+        chart-dataset-override="datasetOverride" chart-click="onClick">
+        </canvas> 
       </div>
       <div class="item item-divider">
          <button class="button button-energized" ng-click="toggleAdditionalInfo()">More</button>
@@ -36,13 +44,85 @@
             This is some additional info and possibly a <a href="#">link</a> to details page.
          </p>
       </div>
-  </div>
-                  
+    </div>
+
+
+    <div class="card">
+      <div class="item item-divider">
+        Pie Chart
+      </div>
+      <div class="item item-text-wrap" id="line-chart" ng-controller="PieCtrl">
+        
+        <canvas id="pie" class="chart chart-pie"
+          chart-data="data" chart-labels="labels" chart-options="options">
+        </canvas> 
+
+      </div>
+    </div>
+
+
+    <div class="card">
+      <div class="item item-divider">Bar Chart</div>
+      <div class="item item-text-wrap" id="bar-chart" ng-controller="BarCtrl">
+        
+        <canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-series="series"></canvas>
+
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="item item-divider">Radar Chart</div>
+      <div class="item item-text-wrap" id="radar-chart" ng-controller="RadarCtrl">
+        <canvas id="radar" class="chart chart-radar" chart-data="data" chart-options="options" chart-labels="labels"></canvas> 
+      </div>
+    </div>
 
 
 
 
-          <button class="button button-light button-block">Light</button>
+    <div class="card">
+      <div class="item item-divider">Radar Chart</div>
+      <div class="item item-text-wrap" id="radar-chart" ng-controller="BarCtrl">
+        <canvas id="base" class="chart-horizontal-bar" chart-data="data" chart-labels="labels"></canvas> 
+      </div>
+    </div>
+
+
+
+    <div class="card">
+      <div class="item item-divider">Radar Chart</div>
+      <div class="item item-text-wrap" id="radar-chart" ng-controller="RadarCtrl">
+        <canvas id="radar" class="chart chart-radar" chart-data="data" chart-options="options" chart-labels="labels"></canvas> 
+      </div>
+    </div>
+
+
+
+
+    <div class="card">
+      <div class="item item-divider">Data Tables</div>
+      <div class="item item-text-wrap" id="line-chart" ng-controller="DataTablesCtrl">
+        
+          <table class="table table-responsive table-condensed table-striped">
+            <tr>
+              <th ng-repeat="label in labels">{{label}}</th>
+            </tr>
+            <tr ng-repeat="dataSet in data">
+              <td ng-repeat="set in dataSet track by $index"><span style="text-align: right;">{{data[$parent.$index][$index]}}</span></td>
+            </tr>
+          </table>
+          <button type="button" class="btn btn-primary pull-right" ng-click="randomize()">Randomize</button>
+
+      </div>
+    </div>
+
+
+
+
+
+
+
+          <button class="button button-light button-block" ng-click="showToast()">Show Toast</button>
           <button class="button button-positive button-block">Positive</button>
           <button class="button button-balanced button-block">Balanced</button>
           <button class="button button-energized button-block">Energized</button>
